@@ -7,4 +7,4 @@ CS 246: Mining Massive DataSet - Problem Set 4
 
 - compile:	make
 - run:		./datastream.c
-
+- result:	graph.png
