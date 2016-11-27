@@ -72,7 +72,6 @@ int plotting(){
 	int word;
 	int values[NUM_HASH]; 	// list value of item in matrix, with hash_function
 	int hash_code[NUM_HASH];
-	long all = 0;
 
 	/*
 		with item 'i', compute all hash_j(i)
@@ -94,12 +93,15 @@ int plotting(){
 
 		fscanf(f_count, "%d", &word);
 		fscanf(f_count, "%d", &count);
-		all += count;
+		
+		if( (min-count)/count < 1){
+			printf("%d: \t %f\n", word, count*1.0/all_stream);
+		//	fprintf(gnuplot, "%f %f\n", log10(count*1.0/all_stream), log10((min - count)*1.0/count) );
+		}
 		fprintf(gnuplot, "%f %f\n", log10(count*1.0/all_stream), log10((min - count)*1.0/count) );
 		//fprintf(gnuplot, "%f %f\n", count, min);
 	}
 
-	printf("all = %ld, all_stream = %ld", all, all_stream);
 	fclose(f_count);
 	fputs("e\n", gnuplot);
 	
